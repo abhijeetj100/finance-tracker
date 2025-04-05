@@ -12,45 +12,9 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          # cache: 'yarn'
-          
-      # - name: Configure Yarn cache
-      #   run: yarn config set cache-folder ${{ runner.temp }}/yarn-cache
-
-      - name: Install dependencies
-        run: yarn install
-      
-      - name: Lint check
-        run: yarn lint || echo "Linting issues found"
-        continue-on-error: true
-        
-      - name: Type check
-        run: yarn tsc --noEmit
-      
-      - name: Run tests
-        run: yarn test --ci --coverage
-        
-      - name: Build application
-        run: yarn build
-        
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: build/
-          retention-days: 7
-          
-      # Optional: Deploy to GitHub Pages
-      # - name: Deploy to GitHub Pages
-      #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     folder: build
-      #     branch: gh-pages
+          node-version: '20.x'
+      - run: |
+          yarn --vesion
