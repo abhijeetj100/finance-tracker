@@ -1,10 +1,12 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './App.scss'
 import {RootState} from './store.ts'
 import { increment} from './store/counterSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import UsersList from './UsersList.tsx'
+import { Button } from '@mui/material'
+import ThemeToggle from './ThemeToggle.tsx'
 
 function App() {
   const count = useSelector((state: RootState) => state.counter.value);
@@ -23,9 +25,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => dispatch(increment())}>
+        <Button onClick={() => dispatch(increment())}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -34,6 +36,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <UsersList />
+      <ThemeToggle />
     </>
   )
 }
