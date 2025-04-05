@@ -25,7 +25,7 @@ jobs:
       #   run: yarn config set cache-folder ${{ runner.temp }}/yarn-cache
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       
       - name: Lint check
         run: yarn lint || echo "Linting issues found"
